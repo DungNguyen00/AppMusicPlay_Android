@@ -1,15 +1,18 @@
 package com.dungduy.demo.appplaymusic.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 
+import com.dungduy.demo.appplaymusic.Activity.DanhsachbaihatActivity;
 import com.dungduy.demo.appplaymusic.Model.Quangcao;
 import com.dungduy.demo.appplaymusic.R;
 import com.squareup.picasso.Picasso;
@@ -52,6 +55,14 @@ public class BannerAdapter extends PagerAdapter {
         txttitlesongbanner.setText(arrayListBanner.get(position).getTenBaiHat());
         txtnoidung.setText(arrayListBanner.get(position).getNoiDung());
 
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, DanhsachbaihatActivity.class);
+                intent.putExtra("banner", arrayListBanner.get(position));
+                context.startActivity(intent);
+            }
+        });
         container.addView(view);
         return view;
     }
