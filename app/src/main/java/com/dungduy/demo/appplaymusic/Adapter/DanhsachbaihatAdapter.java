@@ -1,6 +1,7 @@
 package com.dungduy.demo.appplaymusic.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.dungduy.demo.appplaymusic.Activity.PlayNhacActivity;
 import com.dungduy.demo.appplaymusic.Model.Baihat;
 import com.dungduy.demo.appplaymusic.R;
 
@@ -57,6 +59,15 @@ public class DanhsachbaihatAdapter extends RecyclerView.Adapter<DanhsachbaihatAd
             txtindex = itemView.findViewById(R.id.textviewdanhsachindex);
             txttenbaihat = itemView.findViewById(R.id.textviewtenbaihat);
             imgluotthich = itemView.findViewById(R.id.imageviewluotthichdanhsachbaihat);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context, PlayNhacActivity.class);
+                    intent.putExtra("cakhuc", mangbaihat.get(getPosition()));
+                    context.startActivity(intent);
+                }
+            });
         }
     }
 }

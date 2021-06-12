@@ -1,5 +1,6 @@
 package com.dungduy.demo.appplaymusic.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,7 @@ import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
+import com.dungduy.demo.appplaymusic.Activity.DanhsachbaihatActivity;
 import com.dungduy.demo.appplaymusic.Model.ChuDe;
 import com.dungduy.demo.appplaymusic.Model.Theloaitrongngay;
 import com.dungduy.demo.appplaymusic.Model.TheLoai;
@@ -90,6 +92,17 @@ public class Fragment_chude_theloai_today extends Fragment {
                     cardView.setLayoutParams(layoutParams);
                     cardView.addView(imageView);
                     linearLayout.addView(cardView);
+
+
+                    int finalJ = j;
+                    imageView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent = new Intent(getActivity(), DanhsachbaihatActivity.class);
+                            intent.putExtra("idtheloai", theloaiArrayList.get(finalJ));
+                            startActivity(intent);
+                        }
+                    });
                 }
                 horizontalScrollView.addView(linearLayout);
             }

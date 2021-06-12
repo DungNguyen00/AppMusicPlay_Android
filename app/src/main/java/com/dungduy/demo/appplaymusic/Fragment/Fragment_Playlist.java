@@ -1,9 +1,11 @@
 package com.dungduy.demo.appplaymusic.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -12,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.dungduy.demo.appplaymusic.Activity.DanhsachbaihatActivity;
 import com.dungduy.demo.appplaymusic.Adapter.PlaylistAdapter;
 import com.dungduy.demo.appplaymusic.Model.Playlist;
 import com.dungduy.demo.appplaymusic.R;
@@ -55,6 +58,14 @@ public class Fragment_Playlist extends Fragment {
                 playlistAdapter = new PlaylistAdapter(getActivity(), android.R.layout.simple_list_item_1, mangplaylist);
                 lvplaylist.setAdapter(playlistAdapter);
                 setListViewHeightBasedOnChildren(lvplaylist);
+                lvplaylist.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Intent intent = new Intent(getActivity(), DanhsachbaihatActivity.class);
+                        intent.putExtra("itemplaylist", mangplaylist.get(position));
+                        startActivity(intent);
+                    }
+                });
             }
 
             @Override
