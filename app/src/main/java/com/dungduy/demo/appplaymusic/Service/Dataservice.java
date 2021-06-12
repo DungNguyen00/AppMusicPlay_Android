@@ -3,6 +3,7 @@ package com.dungduy.demo.appplaymusic.Service;
 import com.dungduy.demo.appplaymusic.Model.Album;
 import com.dungduy.demo.appplaymusic.Model.Baihat;
 import com.dungduy.demo.appplaymusic.Model.Theloaitrongngay;
+import com.dungduy.demo.appplaymusic.Model.Playlist;
 import com.dungduy.demo.appplaymusic.Model.Quangcao;
 
 import java.util.List;
@@ -18,8 +19,11 @@ public interface Dataservice {
     @GET("songbanner.php")
     Call<List<Quangcao>> GetDataBanner();
 
-    @GET("playlistforcurrentday.php")
+    @GET("chudevatheloaitrongngay.php")
     Call<Theloaitrongngay> GetCategoryMusic();
+
+    @GET("playlistforcurrentday.php")
+    Call<List<Playlist>> GetplaylistcurrentDay();
 
     @GET("albumhot.php")
     Call<List<Album>> GetAlbumHot();
