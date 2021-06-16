@@ -95,4 +95,3 @@ public class Fragment_Playlist extends Fragment {
         listView.setLayoutParams(params);
     }
 }
-
