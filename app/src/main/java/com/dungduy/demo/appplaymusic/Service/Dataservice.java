@@ -28,7 +28,7 @@ public interface Dataservice {
     @GET("albumhot.php")
     Call<List<Album>> GetAlbumHot();
 
-    @GET("baihatduocthich")
+    @GET("baihatduocthich.php")
     Call<List<Baihat>> GetBaiHatHot();
 
     @FormUrlEncoded
