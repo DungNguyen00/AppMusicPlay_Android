@@ -2,6 +2,7 @@ package com.dungduy.demo.appplaymusic.Service;
 
 import com.dungduy.demo.appplaymusic.Model.Album;
 import com.dungduy.demo.appplaymusic.Model.Baihat;
+import com.dungduy.demo.appplaymusic.Model.ChuDe;
 import com.dungduy.demo.appplaymusic.Model.Theloaitrongngay;
 import com.dungduy.demo.appplaymusic.Model.Playlist;
 import com.dungduy.demo.appplaymusic.Model.Quangcao;
@@ -42,6 +43,9 @@ public interface Dataservice {
     @FormUrlEncoded
     @POST("danhsachbaihat.php")
     Call<List<Baihat>> GetDanhsachbaihattheotheloai(@Field("idtheloai") String istheloai);
+
+    @GET("tatcachude.php")
+    Call<List<ChuDe>> GetAllChuDe();
 
     @FormUrlEncoded
     @POST("danhsachbaihat.php")
