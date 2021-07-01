@@ -64,39 +64,39 @@ public class SearchBaiHatAdapter extends  RecyclerView.Adapter<SearchBaiHatAdapt
             txtCasi = itemView.findViewById(R.id.textviewsearchcasi);
             imgbaihat = itemView.findViewById(R.id.imageviewSearchbaihat);
             imgluotthich = itemView.findViewById(R.id.imageviewSearchluotthich);
-//            itemView.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    Intent intent = new Intent(context, PlayNhacActivity.class);
-//                    intent.putExtra("cakhuc", mangbaihat.get(getPosition()));
-//                    context.startActivity(intent);
-//                }
-//            });
-//            imgluotthich.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    imgluotthich.setImageResource(R.drawable.iconloved);
-//                    Dataservice dataservice = APIService.getService();
-//                    Call<String> callback = dataservice.UpdateLuotThich("1", mangbaihat.get(getPosition()).getIdbaihat());
-//                    callback.enqueue(new Callback<String>() {
-//                        @Override
-//                        public void onResponse(Call<String> call, Response<String> response) {
-//                            String ketqua = response.body();
-//                            if (ketqua.equals("success")){
-//                                Toast.makeText(context, "Da thich", Toast.LENGTH_SHORT).show();
-//                            }else {
-//                                Toast.makeText(context, "Loi", Toast.LENGTH_SHORT).show();
-//                            }
-//                        }
-//
-//                        @Override
-//                        public void onFailure(Call<String> call, Throwable t) {
-//
-//                        }
-//                    });
-//                    imgluotthich.setEnabled(false);
-//                }
-//            });
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context, PlayNhacActivity.class);
+                    intent.putExtra("cakhuc", mangbaihat.get(getPosition()));
+                    context.startActivity(intent);
+                }
+            });
+            imgluotthich.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    imgluotthich.setImageResource(R.drawable.iconloved);
+                    Dataservice dataservice = APIService.getService();
+                    Call<String> callback = dataservice.UpdateLuotThich("1", mangbaihat.get(getPosition()).getIdbaihat());
+                    callback.enqueue(new Callback<String>() {
+                        @Override
+                        public void onResponse(Call<String> call, Response<String> response) {
+                            String ketqua = response.body();
+                            if (ketqua.equals("success")){
+                                Toast.makeText(context, "Da thich", Toast.LENGTH_SHORT).show();
+                            }else {
+                                Toast.makeText(context, "Loi", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<String> call, Throwable t) {
+
+                        }
+                    });
+                    imgluotthich.setEnabled(false);
+                }
+            });
         }
     }
 }

@@ -83,9 +83,7 @@ public class Fragment_Tim_Kiem extends Fragment {
             @Override
             public void onResponse(Call<List<Baihat>> call, Response<List<Baihat>> response) {
                 ArrayList<Baihat> mangbaihat = (ArrayList<Baihat>) response.body();
-//                Log.d("BBB", "gdg" + String.valueOf(mangbaihat.size()));
                 if (mangbaihat.size() <0){
-                    Log.d("BBB", "sdfasdfa");
                     searchBaiHatAdapter = new SearchBaiHatAdapter(getActivity(), mangbaihat);
                     LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
                     recyclerViewsearchbaihat.setLayoutManager(linearLayoutManager);
