@@ -25,20 +25,20 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class SearchBaiHatAdapter extends  RecyclerView.Adapter<SearchBaiHatAdapter.ViewHolder>{
+public class SearchBaihatAdapter extends RecyclerView.Adapter<SearchBaihatAdapter.ViewHolder> {
     Context context;
     ArrayList<Baihat> mangbaihat;
 
-    public SearchBaiHatAdapter(Context context, ArrayList<Baihat> mangbaihat) {
+    public SearchBaihatAdapter(Context context, ArrayList<Baihat> mangbaihat) {
         this.context = context;
         this.mangbaihat = mangbaihat;
     }
 
-//    @NonNull
+    @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View view = inflater.inflate(R.layout.dong_search_bai_hat, parent, false);
+        LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
+        View view = layoutInflater.inflate(R.layout.dong_search_bai_hat, parent, false);
         return new ViewHolder(view);
     }
 
@@ -47,7 +47,8 @@ public class SearchBaiHatAdapter extends  RecyclerView.Adapter<SearchBaiHatAdapt
         Baihat baihat = mangbaihat.get(position);
         holder.txtTenbaihat.setText(baihat.getTenbaihat());
         holder.txtCasi.setText(baihat.getCasi());
-        Picasso.with(context).load(baihat.getHinhbaihat()).into(holder.imgbaihat);
+        Picasso.with(context).load(baihat.getLinkbaihat()).into(holder.imgbaihat);
+
     }
 
     @Override
@@ -56,19 +57,20 @@ public class SearchBaiHatAdapter extends  RecyclerView.Adapter<SearchBaiHatAdapt
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        TextView txtTenbaihat, txtCasi;
-        ImageView imgbaihat, imgluotthich;
+        TextView txtTenbaihat,txtCasi;
+        ImageView imgbaihat,imgluotthich;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             txtTenbaihat = itemView.findViewById(R.id.textviewsearchtenbaihat);
-            txtCasi = itemView.findViewById(R.id.textviewsearchcasi);
+            txtCasi = itemView.findViewById(R.id.textviewsearchtencasi);
             imgbaihat = itemView.findViewById(R.id.imageviewSearchbaihat);
             imgluotthich = itemView.findViewById(R.id.imageviewSearchluotthich);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(context, PlayNhacActivity.class);
-                    intent.putExtra("cakhuc", mangbaihat.get(getPosition()));
+                    intent.putExtra("cakhuc",mangbaihat.get(getLayoutPosition()));
                     context.startActivity(intent);
                 }
             });
@@ -77,15 +79,15 @@ public class SearchBaiHatAdapter extends  RecyclerView.Adapter<SearchBaiHatAdapt
                 public void onClick(View v) {
                     imgluotthich.setImageResource(R.drawable.iconloved);
                     Dataservice dataservice = APIService.getService();
-                    Call<String> callback = dataservice.UpdateLuotThich("1", mangbaihat.get(getPosition()).getIdbaihat());
+                    Call<String> callback = dataservice.Updateluotthich("1", mangbaihat.get(getPosition()).getIdbaihat());
                     callback.enqueue(new Callback<String>() {
                         @Override
                         public void onResponse(Call<String> call, Response<String> response) {
                             String ketqua = response.body();
-                            if (ketqua.equals("success")){
-                                Toast.makeText(context, "Da thich", Toast.LENGTH_SHORT).show();
-                            }else {
-                                Toast.makeText(context, "Loi", Toast.LENGTH_SHORT).show();
+                            if(ketqua.equals("Success")) {
+                                Toast.makeText(context, "Da Thich", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(context, "Loi!", Toast.LENGTH_SHORT).show();
                             }
                         }
 
@@ -95,8 +97,11 @@ public class SearchBaiHatAdapter extends  RecyclerView.Adapter<SearchBaiHatAdapt
                         }
                     });
                     imgluotthich.setEnabled(false);
+
                 }
             });
+
         }
     }
+    
 }
