@@ -138,8 +138,8 @@ public class SearchBaihatAdapter extends RecyclerView.Adapter<SearchBaihatAdapte
 
         }
     }
-                }
-            });
-        }
-    }
+//                }
+//            });
+//        }
+//    }
 }
