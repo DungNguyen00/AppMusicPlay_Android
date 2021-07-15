@@ -17,12 +17,32 @@
             android:layout_height="wrap_content">
         </fragment>
         <fragment
+            android:name="com.dungduy.demo.appplaymusic.Fragment.Fragment_Playlist"
+            android:id="@+id/fragmentplaylist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </fragment>
+
+        <fragment
+            android:name="com.dungduy.demo.appplaymusic.Fragment.Fragment_chude_theloai_today"
+            android:id="@+id/fragmentchudetheloai"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </fragment>
+
+        <fragment
             android:name="com.dungduy.demo.appplaymusic.Fragment.Fragment_Album_Hot"
             android:id="@+id/fragmentalbum"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
         </fragment>
 
+        <fragment
+            android:name="com.dungduy.demo.appplaymusic.Fragment.Fragment_Bai_Hat_Hot"
+            android:id="@+id/fragmentbaihathot"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </fragment>
     </LinearLayout>
 
 

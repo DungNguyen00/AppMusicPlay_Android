@@ -14,60 +14,60 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.dungduy.demo.appplaymusic.Activity.PlayNhacActivity;
 import com.dungduy.demo.appplaymusic.Model.Baihat;
 import com.dungduy.demo.appplaymusic.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class DanhsachbaihatAdapter extends RecyclerView.Adapter<DanhsachbaihatAdapter.ViewHolder>{
-
+public class BaihathotAdapter extends RecyclerView.Adapter<BaihathotAdapter.ViewHolder>  {
     Context context;
-    ArrayList<Baihat> mangbaihat;
+    ArrayList<Baihat> baihatArrayList;
 
-    public DanhsachbaihatAdapter(Context context, ArrayList<Baihat> mangbaihat) {
+    public BaihathotAdapter(Context context, ArrayList<Baihat> baihatArrayList) {
         this.context = context;
-        this.mangbaihat = mangbaihat;
+        this.baihatArrayList = baihatArrayList;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.dong_danh_sach_bai_hat, parent, false);
+        View view = inflater.inflate(R.layout.dong_bai_hat_hot,parent,false);
         return new ViewHolder(view);
     }
 
     @Override
+    //Gắn dữ liệu vào
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Baihat baihat = mangbaihat.get(position);
+        Baihat baihat = baihatArrayList.get(position);
         holder.txtcasi.setText(baihat.getCasi());
-        holder.txttenbaihat.setText(baihat.getTenbaihat());
-        holder.txtindex.setText(position + 1 +"");
-
+        holder.txtten.setText(baihat.getTenbaihat());
+        Picasso.with(context).load(baihat.getHinhbaihat()).into(holder.imghinh);
     }
 
     @Override
     public int getItemCount() {
-        return mangbaihat.size();
+        return baihatArrayList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
-
-        TextView txtindex, txttenbaihat, txtcasi;
-        ImageView imgluotthich;
+    public class ViewHolder extends RecyclerView.ViewHolder {
+        TextView txtten,txtcasi;
+        ImageView imghinh,imgluotthich;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            txtcasi = itemView.findViewById(R.id.textvietencasi);
-            txtindex = itemView.findViewById(R.id.textviewdanhsachindex);
-            txttenbaihat = itemView.findViewById(R.id.textviewtenbaihat);
-            imgluotthich = itemView.findViewById(R.id.imageviewluotthichdanhsachbaihat);
-
+            txtten = itemView.findViewById(R.id.textviewtenbaihathot);
+            txtcasi = itemView.findViewById(R.id.textviewcasibaihathot);
+            imghinh = itemView.findViewById(R.id.imageviewbaihathot);
+            imgluotthich = itemView.findViewById(R.id.imageviewluotthich);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(context, PlayNhacActivity.class);
-                    intent.putExtra("cakhuc", mangbaihat.get(getPosition()));
+                    intent.putExtra("cakhuc", baihatArrayList.get(getPosition()));
                     context.startActivity(intent);
                 }
             });
         }
     }
+
 }
+
